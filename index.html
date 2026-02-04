@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Question 💗</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffd6e8;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .card {
+      width: 340px;
+      padding: 30px 22px;
+      background: #fff;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      position: relative;
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ff4d88;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 18px;
+    }
+
+    .emojis {
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px 0;
+      font-size: 1rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.2s;
+    }
+
+    #yesBtn {
+      background: #ff69b4;
+      color: #fff;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.05);
+    }
+
+    #noBtn {
+      background: #ffffff;
+      color: #333;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+
+    .hidden { display: none; }
+
+    .success {
+      text-align: center;
+      animation: pop 0.6s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <div class="card" id="page1">
+    <h1>Will you be my Valentine? 💕</h1>
+    <div class="subtitle">I was thinking about this for a long time 👉👈</div>
+    <div class="emojis">🌸💗🥺✨</div>
+
+    <p style="font-size:0.9rem; color:#666;">
+      No pressure at all 😅 but just know that<br>
+      you’d make this Valentine’s really special 💝
+    </p>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 😍</button>
+      <button id="noBtn">No 🙄</button>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="card hidden" id="page2">
+    <div class="success">
+      <h1>Yayyy!! 💖🎉</h1>
+      <p style="font-size:1rem;">
+        You said <b>YES</b> 😭💗<br><br>
+        Thank you for agreeing and making me smile like an idiot 😌✨
+      </p>
+      <p>Happy Valentine’s Day 💐🥰</p>
+      <div class="emojis">💞🌹💌</div>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+
+    noBtn.addEventListener('mouseenter', () => {
+      const maxX = 220;
+      const maxY = 120;
+      const x = Math.random() * maxX * (Math.random() < 0.5 ? -1 : 1);
+      const y = Math.random() * maxY * (Math.random() < 0.5 ? -1 : 1);
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    yesBtn.addEventListener('click', () => {
+      page1.classList.add('hidden');
+      page2.classList.remove('hidden');
+      document.title = 'She said YES 💗';
+    });
+  </script>
+
+</body>
+</html>
